@@ -1,5 +1,9 @@
 import random, time
 
+uuidlatters = (
+    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+    'a', 'b', 'c', 'd', 'e','f'
+)
 varnamelatters = (
         '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
@@ -24,6 +28,8 @@ def randomfname(n:int) -> str:
 def randomvarname(n:int) -> str:
     return "".join(random.choices(varnamelatters, k=n))
 
+def uuid():
+    return "".join(random.choices(uuidlatters, k=32))
 
 class Timer:
 

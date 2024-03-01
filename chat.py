@@ -4,10 +4,10 @@ SYMBOLS = ".,!?"
 
 class chatbot:
     def __init__(self):
-        self.LM = [{():{"":0}}]
+        self.LM = []
     
     def add_LM(self, LM):
-        self.LM.update([{tuple([w.strip(SYMBOLS).lower() for w in s.split(" ")]):[{w.replace("{name}", self.name):p} for w, p in a.items()]}
+        self.LM.append([{tuple([w.strip(SYMBOLS).lower() for w in s.split(" ")]):[{w:p} for w, p in a.items()]}
                for s, a in LM.items()])
         """for s, a in LM.items():
             c = {}
@@ -33,11 +33,10 @@ class chatbot:
             for word in inp_words:
             	if word in q:
                     c += 1
-            ans.append((q, c))
+            tuple_q = tuple(q)
+            ans.append((tuple_q[0], c))
         ans_candidate = {}
+        print(ans)
         for q, c in ans:
-            if q in ans_candidate.keys():
-                ans_candidate.update({q:ans_candidate[q] + c})
-            else:
-                ans_candidate.update({q:c})
+            ans_candidate[q] = c
         return self.LM[random.choices(tuple(ans_candidate.keys()), weights=tuple(ans_candidate.values()))[0]]
