@@ -1,4 +1,4 @@
-import random, time
+import random, time, pyperclip
 
 uuidlatters = (
     '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
@@ -30,6 +30,9 @@ def randomvarname(n:int) -> str:
 
 def uuid():
     return "".join(random.choices(uuidlatters, k=32))
+
+def copy_uuid():
+    pyperclip.copy("".join(random.choices(uuidlatters, k=32)))
 
 class Timer:
 
